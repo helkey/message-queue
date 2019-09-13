@@ -2,7 +2,7 @@
 Install Redis (redis-server, redis-sentinel, redis-cli, redis-benchmark, redis-check-aof, redis-check-dump)
 ```sh
 wget http://download.redis.io/redis-stable.tar.gz
-tar xvzf redis-stable.tar.gz
+tar -xvzf redis-stable.tar.gz
 cd redis-stable
 make
 ```
@@ -43,11 +43,11 @@ $ rq worker &
 $ rqscheduler &
 ```
 
-Use "CaAPI - Cats as a Service" to Get a [random cat photo[(https://thecatapi.com/), using the API
+Use "CaAPI - Cats as a Service" to Get a [random cat photo](https://thecatapi.com/), using a RESTful API GET command:
 ```sh
 https://api.thecatapi.com/v1/images/search?limit=1
 ```
-which returns a random photo from their cat collection with a typical json response
+which returns a random photo from their cat collection with a json response corresponding to the random file like:
 ```sh
 [{"breeds":[],"id":"1vr","url":"https://cdn2.thecatapi.com/images/1vr.jpg","width":500,"height":334}]
 ```
