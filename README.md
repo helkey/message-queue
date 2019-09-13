@@ -51,3 +51,29 @@ which returns a random photo from their cat collection with a json response corr
 ```sh
 [{"breeds":[],"id":"1vr","url":"https://cdn2.thecatapi.com/images/1vr.jpg","width":500,"height":334}]
 ```
+Serve this with Flask:
+```python
+from flask import Flask, make_response
+import requests
+
+app = Flask(__name__)
+@app.route('/')
+def hello():
+        cat, typ = rand_cat()
+	        response = make_response(cat)
+		        response.headers.set('Content-Type', 'image/jpeg')
+			        return response
+
+pick_cat_url = 'https://api.thecatapi.com/v1/images/search?limit=1'
+def rand_cat():
+    # PARAMS = {'x-api-key': api_key} # request free api key to get wider range of service
+    r = requests.get(url = pick_cat_url)
+    data = r.json()
+    cat_url = data[0]['url']
+    print(cat_url)
+    response = requests.get(url = cat_url, stream=True)
+    status = response.status_code
+    if status != 200:
+       print("Error:", status)
+    return response.content, cat_url
+```
