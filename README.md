@@ -66,7 +66,7 @@ def hello():
 
 pick_cat_url = 'https://api.thecatapi.com/v1/images/search?limit=1'
 def rand_cat():
-    # PARAMS = {'x-api-key': api_key} # request free api key to get wider range of service
+    # PARAMS = {'x-api-key': api_key} # request free api key to get wider range of cats
     r = requests.get(url = pick_cat_url)
     data = r.json()
     cat_url = data[0]['url']
